@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const mongoose = require('mongoose');
 require('dotenv').config();
+app.use(cors());
 const hotelRoutes = require('./router/hotelRoutes'); 
 const roomsRouter = require('./router/roomRouter'); 
 const reviewsRouter = require('./router/reviewsRoutes'); 
