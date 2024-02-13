@@ -12,12 +12,12 @@ const bookingRouter = require('./router/bookingRoutes');
 const userRouter = require('./router/userRoutes'); 
 const paymentRouter = require('./router/paymentRoutes'); 
 
-app.use('/api/v1/h', hotelRoutes);
-app.use('/api/v1/r', roomsRouter);
-app.use('/api/v1/re', reviewsRouter);
-app.use('/api/v1/b', bookingRouter);
-app.use('/api/v1/u', userRouter);
-app.use('/api/v1/p', paymentRouter);
+app.use('/api/v1', hotelRoutes);
+app.use('/api/v1', roomsRouter);
+app.use('/api/v1', reviewsRouter);
+app.use('/api/v1', bookingRouter);
+app.use('/api/v1', userRouter);
+app.use('/api/v1', paymentRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
