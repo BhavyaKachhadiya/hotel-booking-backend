@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const path = require("path");
 const mongoose = require('mongoose');
 require('dotenv').config();
 const cors = require('cors');
 app.use(cors());
+app.use(express.static(path.join(__dirname,'views')))
 const hotelRoutes = require('./router/hotelRoutes'); 
 const roomsRouter = require('./router/roomRouter'); 
 const reviewsRouter = require('./router/reviewsRoutes'); 
@@ -20,7 +22,7 @@ app.use('/api/v1', userRouter);
 app.use('/api/v1', paymentRouter);
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+  res.render('index.html')
 })
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
