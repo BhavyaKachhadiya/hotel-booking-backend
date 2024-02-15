@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Hotel = require('../models/hotelSchema');
+const PopularHotel = require('../models/popularHotelsSchema');
 
 exports.getAllHotels = async (req, res) => {
   try {
@@ -20,6 +21,16 @@ exports.addHotel = async (req, res) => {
 //   }
     res.send("add");
 };
+
+exports.getAllPopularHotels = async (req, res) => {
+  try {
+    const popularHotels = await PopularHotel.find().populate('hotelId'); // Populate hotel details
+    res.json(popularHotels);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 exports.getHotelById = async (req, res) => {
   try {
